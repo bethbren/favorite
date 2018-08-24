@@ -7,7 +7,6 @@ phases:
 - phase: windows
 #################################################
   condition: and(succeeded(), eq(variables.os, 'Windows_NT'))
-  queue: Hosted VS2017
 
   steps:
   ################################################################################
@@ -61,7 +60,6 @@ phases:
 - phase: linux
 #################################################
   condition: and(succeeded(), eq(variables.os, 'Linux'))
-  queue: Hosted Linux Preview
 
   steps:
   ################################################################################
@@ -101,7 +99,6 @@ phases:
 - phase: macOS
 #################################################
   condition: and(succeeded(), eq(variables.os, 'Darwin'))
-  queue: Hosted
 
   steps:
   ################################################################################
