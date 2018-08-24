@@ -101,7 +101,7 @@ phases:
 - phase: macOS
 #################################################
   condition: and(succeeded(), eq(variables.os, 'Darwin'))
-  queue: Hosted macOS Preview
+  queue: Hosted
 
   steps:
   ################################################################################
