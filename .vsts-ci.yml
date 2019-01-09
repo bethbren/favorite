@@ -8,5 +8,5 @@ jobs:
     steps:
       - task: Delay@1
         displayName: 'Delay by 1 minutes'
-          inputs:
-            delayForMinutes: 1
+        inputs:
+          delayForMinutes: 1
