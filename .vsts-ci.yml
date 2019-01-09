@@ -3,6 +3,12 @@ trigger:
 - features/*
 
 phases:
+-phase: serverless
+  steps:
+  - task: Delay@1  
+    displayName: 'delay'
+    inputs:
+      delayForMinutes: 1
 #################################################
 - phase: windows
 #################################################
