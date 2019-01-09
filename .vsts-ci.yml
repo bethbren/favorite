@@ -7,7 +7,7 @@ phases:
 - phase: serverless
 #################################################
   steps:
-  - task: Delay@1  
+  - task: Delay  
     displayName: 'delay'
     inputs:
       delayForMinutes: 1
