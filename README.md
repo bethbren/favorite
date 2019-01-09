@@ -1,6 +1,5 @@
 # veryEmpty
-For build tests only
-:)
+For build tests only!
 
 
 
