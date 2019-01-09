@@ -3,7 +3,9 @@ trigger:
 - features/*
 
 phases:
--phase: serverless
+#################################################
+- phase: serverless
+#################################################
   steps:
   - task: Delay@1  
     displayName: 'delay'
