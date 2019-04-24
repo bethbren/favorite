@@ -1,73 +1,48 @@
-jobs:
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
 
-  - job: firsttestjob
-
-    pool: 'Default'
-
+stages: 
+- stage: dev
+  jobs:
+  - job: PhaseA  
+    pool: default
     steps:
+    - script: echo Hello, dev!
+      displayName: 'Run a one-line script'
 
-    - task: Maven@2
+    - script: echo $(variable)
 
-      inputs:
-
-        mavenPomFile: 'ci-test-app/pom.xml'
-
-        goals: clean
-
-        jdkVersionOption: 1.8
-
-        jdkArchitectureOption: x64
-
-        checkStyleRunAnalysis: false
-
-        pmdRunAnalysis: false
-
-        findBugsRunAnalysis: false
-
-  - job: secondtestjob
-
-    pool: 'Default'
-
+  - job: PhaseB
+    pool: default
     steps:
+    - script: SET
 
-    - task: Maven@2
+    variables:
+    - name: variable
+      value: job
 
-      inputs:
+  variables:
+    - name: variable
+      value: devstage
 
-        mavenPomFile: 'ci-test-app/pom.xml'
-
-        mavenOptions: '-Xmx3072m'
-
-        jdkVersionOption: 1.8
-
-        jdkArchitectureOption: x64
-
-        checkStyleRunAnalysis: true
-
-        pmdRunAnalysis: true
-
-        findBugsRunAnalysis: true
-
-  - job: thirdtestjob
-
-    pool: 'Default'
-
+- stage: prod
+  jobs:
+  - job: PhaseB 
+    pool: default
     steps:
+    - script: |
+        echo Add other tasks to build, test, and deploy your project.
+        echo exec prc_SetRegistryValue 1, '#\FeatureAvailability\Entries\DistributedTask.EnableStages\AvailabilityState\', '1' 
+        ping google.com -n 1
+      displayName: 'Run a multi-line script'
 
-    - task: Maven@2
+  - job: PhaseA
+    pool: default
+    steps:
+    - script: echo $(variable)
 
-      inputs:
-
-        mavenPomFile: 'ci-test-app/pom.xml'
-
-        javaHomeOption: 'JDKVersion'
-
-        jdkVersionOption: '1.8'
-
-        jdkArchitectureOption: 'x64'
-
-        publishJUnitResults: false
-
-        testResultsFiles: '**/TEST-*.xml'
-
-        goals: 'package'
+  variables:
+    - name: variable
+      value: prodstage
